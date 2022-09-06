@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@700&display=swap" rel="stylesheet">
+   
+  <title>Frontend Mentor | Tip calculator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <!-- <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style> -->
+</head>
+<body>
+
+
+   <div class="container">
+      <h2 class="heading">
+        <span>SPLI</span>
+        <span>TTER</span>
+      </h2>
+      <div class="Tip-calculator">
+        <div class="form">
+          <div class="bill">
+            <label class="title">Bill</label>
+            <input type ="text" id ="billPrice" class="inpt inpt-bill" placeholder="0">
+          </div>
+          <label  class="title">Select Tip %</label>
+           <div class="radiobox"> 
+            <input type="radio" name="size" hidden id="five" value="5">
+            <label for="five" class="radio-btn">5%</label>
+            <input type="radio" name="size" hidden id="ten" value="10">
+            <label for="ten" class="radio-btn"  >10%</label>
+            <input type="radio" name="size"  hidden id="fifteen" value="15">
+            <label for="fifteen" class="radio-btn" data-value="15" >15%</label>
+            <input type="radio" name="size" hidden id="twenty"  value="20">
+            <label for="twenty" class="radio-btn" >20%</label>
+            <input type="radio" name="size" value="50" hidden id="fifty">
+            <label for="fifty" class="radio-btn" >50%</label> 
+            <input type ="text" id="custom" class="inpt-bill" placeholder="custom">
+          </div> 
+          <div class="numofpeople"> 
+            <label  class="title">Number of people</label>
+            <input type ="text" class="inpt inpt-numofpeople" placeholder="0" id="numofpeople">
+          </div>
+        
+        </div>
+        <div class="result">
+          <div class="tip-amount">
+            <div class="left">
+              <p>Tip Amount</p>
+              <span>/person</span>
+            </div>
+            <div class="right">
+             <span class="sign-dollar">$</span><span class="tax-per-person">0.00</span>
+            </div>
+          </div>
+          <div class="tip-amount">
+            <div class="left">
+              <p>Total</p>
+              <span>/person</span>
+            </div>
+            <div class="right">
+             <span class="sign-dollar">$</span><span class="total">0.00</span>
+            </div>
+          </div>
+          <button class="reset">reset</button>
+        </div>
+      </div>
+   </div>
+
+
+   <script src="main.js"></script>
+</body>
+</html>
