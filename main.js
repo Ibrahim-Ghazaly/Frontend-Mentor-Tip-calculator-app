@@ -1,61 +1,112 @@
-let billPriceInput = document.querySelector("#billPrice");
+let billPrice = document.querySelector("#billPrice");
 let custtomInput = document.querySelector("#custom");
 let lables = document.querySelectorAll(".radio-btn");
-let inptradiobtns = document.getElementsByName("size");
 let numofpeopleInput =document.querySelector(".inpt-numofpeople");
 let taxPerPerson =document.querySelector(".tax-per-person");
 let total =document.querySelector(".total");
-let reset = document.querySelector(".reset")
+let reset = document.querySelector(".reset");
+let popupBill=document.querySelector(".popup-bill");
 
 
+let billBriceValue ="0.0";
+let numofpeopleValue="1";
+let radioValue=".15"
 
-let radiopercentage = 0;
-let  radioValue=[];
-inptradiobtns.forEach((radio,i)=>{
-    radio.addEventListener("click",(e)=>{
-                radioValue.push(parseInt(radio.value))
-                 radiopercentage = i;
-              
-})
-})
-
-//remove check class from all lables and put it what i clicked
-lables.forEach((label)=>{
-    label.addEventListener("click",()=>{
-        lables.forEach((l,i)=>{
-            l.classList.remove("check");
-          })
-            label.classList.add("check");
-       })
-   
-   })
-
-console.log(radioValue)
-
-// main function 
-
-numofpeopleInput.onblur=function(){
-
-let billBriceValue =parseFloat(billPrice.value);
-let radiopercentagevalue = radioValue[0]/100;
-let numofpeopleValue=parseFloat( numofpeople.value);
-let custompercentage = parseInt(custom.value)/100 
- console.log(custompercentage)
-    let tax = (billBriceValue*radiopercentagevalue||billBriceValue*custompercentage)/numofpeopleValue;
-    console.log(tax)
-    taxPerPerson.innerHTML =tax.toFixed(2);
-    let billperperson =(billBriceValue/numofpeopleValue)+ (+tax.toFixed(2));
-    console.log(billperperson)
-    total.innerHTML=billperperson.toFixed(2);
-  
-}
-
-
-// refresh the page 
-
+         
 reset.onclick = function(){
-    window.location.reload();
-}
+ 
+    billPrice.value="";
+    numofpeopleInput.value="";
+    custtomInput.value="";
+    taxPerPerson.innerHTML="0.00";
+    total.innerHTML="0.00";
+    lables.forEach((l)=>{
+        l.classList.remove("check");
+    });
+    billPrice.style.borderColor="transparent";
+    numofpeopleInput.style.borderColor="transparent";
+    popupBill.style.opacity=0;
+    reset.style.opacity=.3;
+
+}         
+
+
+
+
+
+lables.forEach((label,i)=>{
+    label.addEventListener("click",(event)=>{
+        lables.forEach((l)=>{
+            l.classList.remove("check");
+            if(event.target.innerHTML == label.innerHTML){
+                label.classList.add("check");
+                radioValue= parseFloat(label.innerHTML)/100;
+               
+            } 
+          })
+                custtomInput.value="";
+                custtomInput.style.borderColor="transparent";
+                calculatorTip()
+   })      
+ })
+
+
+billPrice.addEventListener("input",()=>{
+           if(!billPrice.value.length){
+               billPrice.style.borderColor="rgb(223, 60, 60)";
+               popupBill.style.opacity=1;
+         }else{
+               billPrice.style.borderColor="transparent";
+               popupBill.style.opacity=0;
+               billBriceValue=parseFloat(billPrice.value);
+               calculatorTip()
+           }
+    })
+
+
+
+numofpeopleInput.addEventListener("input",()=>{
+         
+        if(!numofpeopleInput.value.length){
+            numofpeopleInput.style.borderColor="rgb(223, 60, 60)";
+        }else{
+            numofpeopleInput.style.borderColor="transparent";
+            numofpeopleValue=parseFloat(numofpeopleInput.value);
+            calculatorTip()
+            }  
+     })
+
+
+custtomInput.addEventListener("input",()=>{
+        if(!custtomInput.value.length){
+            custtomInput.style.borderColor="rgb(223, 60, 60)";
+            }else{
+            custtomInput.style.borderColor="transparent";
+            radioValue=parseFloat(custtomInput.value)/100;
+        
+            lables.forEach((l)=>{
+                l.classList.remove("check");
+            })
+            calculatorTip()
+            }  
+    })
+
+
+      
+       function calculatorTip(){
+             let tax=(billBriceValue*radioValue)/numofpeopleValue;
+               taxPerPerson.innerHTML =tax.toFixed(2);
+               let billperperson =(billBriceValue/numofpeopleValue)+ (+tax.toFixed(2));
+               console.log(billperperson)
+               total.innerHTML=billperperson.toFixed(2);
+               reset.style.opacity=1;
+       }     
+
+ 
+
+
+
+
 
 
 

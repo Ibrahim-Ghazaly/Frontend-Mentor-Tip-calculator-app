@@ -14,30 +14,26 @@
    
   <title>Frontend Mentor | Tip calculator app</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <!-- <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style> -->
+
 </head>
 <body>
 
 
    <div class="container">
-      <h2 class="heading">
-        <span>SPLI</span>
-        <span>TTER</span>
-      </h2>
+      <div class="heading">
+        <img src="images/logo.svg" alt="">
+      </div>
       <div class="Tip-calculator">
         <div class="form">
           <div class="bill">
+            <div class="popup-bill">can't be zero</div> 
             <label class="title">Bill</label>
             <input type ="text" id ="billPrice" class="inpt inpt-bill" placeholder="0">
           </div>
           <label  class="title">Select Tip %</label>
            <div class="radiobox"> 
-            <input type="radio" name="size" hidden id="five" value="5">
-            <label for="five" class="radio-btn">5%</label>
+            <input type="radio" name="size" hidden id="five" >
+            <label for="five" class="radio-btn" >5%</label>
             <input type="radio" name="size" hidden id="ten" value="10">
             <label for="ten" class="radio-btn"  >10%</label>
             <input type="radio" name="size"  hidden id="fifteen" value="15">
@@ -48,13 +44,14 @@
             <label for="fifty" class="radio-btn" >50%</label> 
             <input type ="text" id="custom" class="inpt-bill" placeholder="custom">
           </div> 
-          <div class="numofpeople"> 
+          <div class="numofpeople">
             <label  class="title">Number of people</label>
             <input type ="text" class="inpt inpt-numofpeople" placeholder="0" id="numofpeople">
           </div>
         
         </div>
         <div class="result">
+         <div class="tip">
           <div class="tip-amount">
             <div class="left">
               <p>Tip Amount</p>
@@ -73,6 +70,7 @@
              <span class="sign-dollar">$</span><span class="total">0.00</span>
             </div>
           </div>
+         </div> 
           <button class="reset">reset</button>
         </div>
       </div>
